@@ -1,0 +1,15 @@
+pipeline {
+    agent { label 'agent_mvn_build' } 
+    stages {
+        stage('Clone') { 
+            steps {
+                git branch: 'main', url: 'https://github.com/Roopabs001/java-war-repo.git'
+            }
+        }
+        stage('Build') { 
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+    }
+}
